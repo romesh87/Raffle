@@ -10,5 +10,8 @@ out/
 # Docs
 docs/
 
+# Test coverage
+coverage.txt
+
 # Dotenv file
 .env
