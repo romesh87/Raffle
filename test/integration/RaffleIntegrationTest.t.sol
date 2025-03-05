@@ -91,10 +91,7 @@ contract RaffleIntegrationTest is Test, CodeConstants {
         raffle.performUpkeep("");
         Vm.Log[] memory entries = vm.getRecordedLogs();
         bytes32 requestId = entries[1].topics[1];
-        vrfCoordinatorMock.fulfillRandomWords(
-            uint256(requestId),
-            address(raffle)
-        );
+        vrfCoordinatorMock.fulfillRandomWords(uint256(requestId), address(raffle));
 
         // Assert: Winner picked and funds distributed correctly
         address winner = raffle.getRecentWinner();
