@@ -1,31 +1,8 @@
-// Layout of Contract:
-// version
-// imports
-// errors
-// interfaces, libraries, contracts
-// Type declarations
-// State variables
-// Events
-// Modifiers
-// Functions
-
-// Layout of Functions:
-// constructor
-// receive function (if exists)
-// fallback function (if exists)
-// external
-// public
-// internal
-// private
-// internal & private view & pure functions
-// external & public view & pure functions
-
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
 import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
-import {console} from "forge-std/console.sol";
 
 /**
  * @title Raffle
@@ -52,7 +29,9 @@ contract Raffle is VRFConsumerBaseV2Plus {
         CALCULATING // 1
     }
 
-    /** State variables */
+    /**
+     * State variables
+     */
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 1;
     uint256 private immutable i_entranceFee;
@@ -91,9 +70,6 @@ contract Raffle is VRFConsumerBaseV2Plus {
     }
 
     function enterRaffle() external payable {
-        // Checks
-        // require(msg.value >= i_entranceFee, "Not enough ETH sent!");
-        // require(msg.value >= i_entranceFee, SendMoreToEnterRaffle());
         if (msg.value < i_entranceFee) {
             revert Raffle__SendMoreToEnterRaffle();
         }
@@ -103,9 +79,6 @@ contract Raffle is VRFConsumerBaseV2Plus {
         // Effects
         s_players.push(payable(msg.sender));
         // Events
-        // 1. Makes migration easier
-        // 2. Makes front-end indexing easier
-        // Rule of thumb: Emit events after state changes
         emit RaffleEntered(msg.sender);
     }
 
@@ -167,8 +140,8 @@ contract Raffle is VRFConsumerBaseV2Plus {
 
     // CEI: Checks, Effects, Interactions Pattern
     function fulfillRandomWords(
-        uint256 /* requestId */,
-        uint256[] calldata randomWords
+        uint256,
+        /* requestId */ uint256[] calldata randomWords
     ) internal override {
         // Checks
         // Effects (Internal Contract State Changes)

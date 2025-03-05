@@ -3,7 +3,6 @@ pragma solidity 0.8.19;
 
 import {Test} from "forge-std/Test.sol";
 import {Vm} from "forge-std/Vm.sol";
-import {console} from "forge-std/console.sol";
 import {DeployRaffle} from "script/DeployRaffle.s.sol";
 import {Raffle} from "src/Raffle.sol";
 import {HelperConfig, CodeConstants} from "script/HelperConfig.s.sol";

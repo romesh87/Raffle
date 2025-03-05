@@ -4,7 +4,6 @@ pragma solidity 0.8.19;
 import {Script} from "forge-std/Script.sol";
 import {VRFCoordinatorV2_5Mock} from "@chainlink/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
 import {LinkToken} from "test/mocks/LinkToken.sol";
-import {console} from "forge-std/console.sol";
 
 abstract contract CodeConstants {
     /* VRF mock values */
@@ -61,7 +60,7 @@ contract HelperConfig is CodeConstants, Script {
                 interval: 30, // 30 seconds
                 vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B,
                 gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
-                subscriptionId: 0, // TODO: create subscription on Sepolia
+                subscriptionId: 13517010314592201102120699127018054434777820068829391134247284513399241174821,
                 callbackGasLimit: 500000,
                 link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
                 account: 0x00E768f1A5CE62792501aB73f8A305e46d7e084f
